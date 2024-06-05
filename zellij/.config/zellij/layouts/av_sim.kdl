@@ -1,0 +1,30 @@
+layout {
+    tab name="cpp code" cwd="~/OneDrive/#Studium/Physik SoSe2024/Bachelor-Arbeit/Anti-Vicsek/Simulation" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane {
+            name "simulation code"
+            command "nvim"
+            args "main.cpp"
+        }
+        pane size=2 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+    tab name="shell" cwd="~/OneDrive/#Studium/Physik SoSe2024/Bachelor-Arbeit" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane {
+            name "simulation"
+            cwd "Anti-Vicsek/Simulation"
+        }
+        pane {
+            name "Bachelor-Arbeit"
+        }
+        pane size=2 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+}
