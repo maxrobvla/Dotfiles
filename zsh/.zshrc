@@ -22,21 +22,27 @@ bindkey -r "^[n"
 bindkey -r "^[p"
 bindkey '^H' backward-kill-word
 
-# caps lock -> ctrl
-setxkbmap -layout de -option caps:ctrl_modifier
-
 source ~/.custom_commands.sh
 . "$HOME/.cargo/env"
 
 eval "$(batpipe)"
 eval "$(zoxide init zsh)"
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 alias icat="kitty +kitten icat"
 alias v="nvim"
 alias vf="nvim \$(fzf --preview='cat {}')"
-alias skat="~/Downloads/skat -font 6x13 -lang german"
 alias screenshot="maim -s -D -c 1,0,0 -b 5 | xclip -selection clipboard -t image/png"
 alias s="kitten ssh"
+alias brain="ssh s-mbschu@brain.uni-greifswald.de"
 alias zj="zellij"
 alias fct="ls | wc -l"
 alias ll="eza -la --icons=always --no-user --no-time --no-permissions"
@@ -44,15 +50,13 @@ alias l="eza -a --icons=always"
 alias hx="helix"
 alias nvc='NVIM_APPNAME="nvim-nvchad" nvim'
 alias anv='NVIM_APPNAME="nvim-astro" nvim'
-alias tmk="latexmk -pvc -pdf"
 alias spacemacs='emacs --init-directory="~/.config/spacemacs/.emacs.d"'
-alias doom="~/.config/doomemacs/bin/doom"
 alias doomemacs='emacs --init-directory="~/.config/doomemacs/"'
-alias blahaj="display3d ~/Downloads/display3d/resources/blahaj.obj --fov 80 --fps 15"
+alias blahaj="display3d ~/Dotfiles/other/blahaj/blahaj.obj --fov 80 --fps 15"
 alias man='batman'
-alias y="yazi"
 alias vpnon="nmcli c up vpn-profile-uni-greifswald"
 alias vpnoff="nmcli c down vpn-profile-uni-greifswald"
+alias fishies="asciiquarium"
 
 export PAGER=bat
 

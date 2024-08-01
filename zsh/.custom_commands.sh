@@ -8,16 +8,8 @@ function ba(){
     cd ~/OneDrive/\#Studium/Physik\ SoSe2024/Bachelor-Arbeit
 }
 
-function av(){
-    cd ~/OneDrive/\#Studium/Physik\ SoSe2024/Bachelor-Arbeit/Anti-Vicsek/Simulation
-}
-
-function theo(){
-    cd ~/OneDrive/\#Studium/Physik\ SoSe2024/Quantenkinetik
-}
-
-function fana(){
-    cd ~/OneDrive/\#Studium/Physik\ SoSe2024/Funktionalanalysis
+function sim(){
+    cd ~/OneDrive/\#Studium/Physik\ SoSe2024/Bachelor-Arbeit/Numerik/Simulation
 }
 
 function nvconf(){

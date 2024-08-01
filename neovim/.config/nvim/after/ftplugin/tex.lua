@@ -1,4 +1,2 @@
-print 'This is a tex buffer'
-
--- nvim_buf_set_keymap(0, 'n', '<leader>mb', vim.cmd.TexlabBuild, { desc = 'Build tex file' })
--- nvim_buf_set_keymap(0, 'n', '<leader>mv', vim.cmd.TexlabBuild, { desc = 'View generated pdf' })
+vim.keymap.set('n', '<leader>mb', vim.cmd.TexlabBuild, { desc = '[c]ompile', buffer = true })
+vim.keymap.set('n', '<leader>mv', vim.cmd.TexlabForward, { desc = '[v]iew', buffer = true })

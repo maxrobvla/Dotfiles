@@ -1,31 +1,13 @@
 #!/usr/bin/env bash
-rofi_command="rofi -theme $HOME/.config/rofi/config/powermenu.rasi"
+rofi_command="rofi -theme $HOME/.config/rofi/config/power-profiles.rasi"
 
 uptime=$(uptime -p | sed -e 's/up //g')
 
-# Options
-if [[ "$DIR" == "powermenus" ]]; then
+powersaver="󰌪"
+balanced="󰗑"
+performance="󱐋"
 
-    powersaver="󰌪"
-    balanced="󰗑"
-    performance="󱐋"
-	ddir="$HOME/.config/rofi/config"
-else
-
-
-	# Buttons
-	layout=`cat $HOME/.config/rofi/config/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
-	if [[ "$layout" == "TRUE" ]]; then
-		powersaver="󰌪"
-		balanced="󰗑"
-		performance="󱐋"
-	else
-		powersaver="󰌪 power-saver"
-		balanced="󰗑 balanced"
-		performance="󱐋 performance"
-	fi
-	ddir="$HOME/.config/rofi/config"
-fi
+ddir="$HOME/.config/rofi/config"
 
 # Variable passed to rofi
 options="$powersaver\n$balanced\n$performance"

@@ -301,7 +301,7 @@ require('lazy').setup({
             vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
             vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-            vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+            vim.keymap.set('n', '<leader>bl', builtin.buffers, { desc = '[l]ist' })
 
             -- Slightly advanced example of overriding default behavior and theme
             vim.keymap.set('n', '<leader>/', function()
@@ -342,13 +342,15 @@ require('lazy').setup({
 
             -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
             -- used for completion, annotations and signatures of Neovim apis
-            { 'folke/lazydev.nvim' },
-            ft = 'lua', -- only load on lua files
-            opts = {
-                library = {
-                    -- See the configuration section for more details
-                    -- Load luvit types when the `vim.uv` word is found
-                    { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+            {
+                'folke/lazydev.nvim',
+                ft = 'lua', -- only load on lua files
+                opts = {
+                    library = {
+                        -- See the configuration section for more details
+                        -- Load luvit types when the `vim.uv` word is found
+                        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+                    },
                 },
             },
             { 'Bilal2453/luvit-meta', lazy = true },
@@ -495,9 +497,10 @@ require('lazy').setup({
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
                 clangd = {},
-                -- gopls = {},
+                gopls = {},
                 pyright = {},
                 rust_analyzer = {},
+                marksman = {},
                 texlab = {
                     settings = {
                         texlab = {
@@ -516,6 +519,11 @@ require('lazy').setup({
                         },
                     },
                 },
+                -- typst_lsp = {
+                --     settings = {
+                --         exportPdf = 'onSave',
+                --     },
+                -- },
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
                 -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -606,6 +614,7 @@ require('lazy').setup({
                 -- Conform can also run multiple formatters sequentially
                 python = { 'black' },
                 tex = { 'latexindent' },
+                typst = { 'typstfmt' },
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
@@ -734,27 +743,6 @@ require('lazy').setup({
         end,
     },
 
-    { -- You can easily change to a different colorscheme.
-        -- Change the name of the colorscheme plugin below, and then
-        -- change the command in the config to whatever the name of that colorscheme is.
-        --
-        -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-        'catppuccin/nvim',
-        name = 'catppuccin',
-        priority = 1000, -- Make sure to load this before all the other start plugins.
-        init = function()
-            -- Load the colorscheme here.
-            -- Like many other themes, this one has different styles, and you could load
-            vim.cmd.colorscheme 'catppuccin-mocha'
-
-            -- You can configure highlights by doing something like:
-            vim.cmd.hi 'Comment gui=none'
-        end,
-    },
-
-    -- Highlight todo, notes, etc in comments
-    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
     { -- Collection of various small independent plugins/modules
         'echasnovski/mini.nvim',
         config = function()
@@ -773,18 +761,18 @@ require('lazy').setup({
             -- - sr)'  - [S]urround [R]eplace [)] [']
             require('mini.surround').setup()
 
-            require('mini.jump').setup {
-                mappings = {
-                    forward = 'f',
-                    backward = 'F',
-                    forward_till = '',
-                    backward_till = '',
-                    repeat_jump = '',
-                },
-            }
-            require('mini.jump2d').setup {
-                mappings = { start_jumping = '' },
-            }
+            -- require('mini.jump').setup {
+            --     mappings = {
+            --         forward = 'f',
+            --         backward = 'F',
+            --         forward_till = '',
+            --         backward_till = '',
+            --         repeat_jump = '',
+            --     },
+            -- }
+            -- require('mini.jump2d').setup {
+            --     mappings = { start_jumping = '' },
+            -- }
 
             -- require('mini.files').setup()
 
@@ -804,24 +792,25 @@ require('lazy').setup({
                 return '%2l:%-2v'
             end
 
-            require('mini.starter').setup {
-                header = [[
-                    __..--''``---....___   _..._    __
- /// //_.-'    .-/\";  `        ``<._  ``.''_ `. / // /
-///_.-' _..--.'_    \\                    `( ) ) // // 
-/ (_..-' // (< _     ;_..__               ; `' / ///  
- / // // //  `-._,_)' // / ``--...____..-' /// / //    ]],
-            }
+            -- require('mini.starter').setup {
+            --     --                 header = [[
+            --     --                     __..--''``---....___   _..._    __
+            --     --  /// //_.-'    .-/\";  `        ``<._  ``.''_ `. / // /
+            --     -- ///_.-' _..--.'_    \\                    `( ) ) // //
+            --     -- / (_..-' // (< _     ;_..__               ; `' / ///
+            --     --  / // // //  `-._,_)' // / ``--...____..-' /// / //    ]],
+            -- }
 
             -- ... and there is more!
             --  Check out: https://github.com/echasnovski/mini.nvim
         end,
     },
+
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         opts = {
-            ensure_installed = { 'bash', 'c', 'diff', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'cpp', 'latex', 'python' },
+            ensure_installed = { 'bash', 'c', 'diff', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'vim', 'vimdoc', 'cpp', 'latex', 'python' },
             -- Autoinstall languages that are not installed
             auto_install = true,
             highlight = {
@@ -849,9 +838,6 @@ require('lazy').setup({
             --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
         end,
     },
-    -- {
-    --     'nmac427/guess-indent.nvim',
-    -- },
 
     -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
     -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -874,7 +860,7 @@ require('lazy').setup({
     --
     --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
     --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-    -- { import = 'custom.plugins' },
+    { import = 'custom.plugins' },
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -900,16 +886,10 @@ require('lazy').setup({
 -- set other keymaps for plugins
 local keys = vim.keymap.set
 
--- MiniJump2d
-keys('n', '<leader>jj', function()
-    MiniJump2d.start(MiniJump2d.builtin_opts.word_start)
-end, { desc = 'word (alternative)' })
-keys('n', '<leader>jw', function()
-    MiniJump2d.start(MiniJump2d.builtin_opts.word_start)
-end, { desc = '[w]ord' })
-keys('n', '<leader>jl', function()
-    MiniJump2d.start(MiniJump2d.builtin_opts.line_start)
-end, { desc = '[l]ine' })
+-- Hop
+keys('n', '<leader>jj', vim.cmd.HopPattern, { desc = 'pattern' })
+keys('n', '<leader>jw', vim.cmd.HopWord, { desc = '[w]ord' })
+keys('n', '<leader>jl', vim.cmd.HopLine, { desc = '[l]ine' })
 
 -- keymaps for working with buffers
 keys('n', '<leader>bn', vim.cmd.bnext, { desc = '[n]ext' })
@@ -920,6 +900,9 @@ keys('n', '<leader>bw', vim.cmd.w, { desc = '[w]rite' })
 -- faster keymap to safe buffer
 keys('n', '<C-s>', ':w<CR>', { desc = 'Safe current buffer' })
 keys('i', '<C-s>', ':w<CR>', { desc = 'Safe current buffer' })
+
+-- todo list
+keys('n', '<leader>tl', vim.cmd.TodoTelescope, { desc = '[t]odo [l]ist in telescope' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

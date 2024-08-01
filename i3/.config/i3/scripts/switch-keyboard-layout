@@ -1,0 +1,1 @@
+setxkbmap -query | grep -wc 'gb' && setxkbmap -layout de -variant nodeadkeys -option caps:ctrl_modifier || setxkbmap -layout gb -option caps:ctrl_modifier

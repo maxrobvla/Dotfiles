@@ -82,28 +82,28 @@ bindsym $mod+9    workspace  $ws9
 bindsym $mod+0    workspace  $ws10
 
 # switch to workspace with numpad keys
-bindcode $mod+87 workspace $ws1
-bindcode $mod+88 workspace $ws2
-bindcode $mod+89 workspace $ws3
-bindcode $mod+83 workspace $ws4
-bindcode $mod+84 workspace $ws5
-bindcode $mod+85 workspace $ws6
-bindcode $mod+79 workspace $ws7
-bindcode $mod+80 workspace $ws8
-bindcode $mod+81 workspace $ws9
-bindcode $mod+90 workspace $ws10
+# bindcode $mod+87 workspace $ws1
+# bindcode $mod+88 workspace $ws2
+# bindcode $mod+89 workspace $ws3
+# bindcode $mod+83 workspace $ws4
+# bindcode $mod+84 workspace $ws5
+# bindcode $mod+85 workspace $ws6
+# bindcode $mod+79 workspace $ws7
+# bindcode $mod+80 workspace $ws8
+# bindcode $mod+81 workspace $ws9
+# bindcode $mod+90 workspace $ws10
 
 # switch to workspace with numlock numpad keys
-bindcode $mod+Mod2+87 workspace $ws1
-bindcode $mod+Mod2+88 workspace $ws2
-bindcode $mod+Mod2+89 workspace $ws3
-bindcode $mod+Mod2+83 workspace $ws4
-bindcode $mod+Mod2+84 workspace $ws5
-bindcode $mod+Mod2+85 workspace $ws6
-bindcode $mod+Mod2+79 workspace $ws7
-bindcode $mod+Mod2+80 workspace $ws8
-bindcode $mod+Mod2+81 workspace $ws9
-bindcode $mod+Mod2+90 workspace $ws10
+# bindcode $mod+Mod2+87 workspace $ws1
+# bindcode $mod+Mod2+88 workspace $ws2
+# bindcode $mod+Mod2+89 workspace $ws3
+# bindcode $mod+Mod2+83 workspace $ws4
+# bindcode $mod+Mod2+84 workspace $ws5
+# bindcode $mod+Mod2+85 workspace $ws6
+# bindcode $mod+Mod2+79 workspace $ws7
+# bindcode $mod+Mod2+80 workspace $ws8
+# bindcode $mod+Mod2+81 workspace $ws9
+# bindcode $mod+Mod2+90 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1    move container to workspace  $ws1
@@ -118,28 +118,61 @@ bindsym $mod+Shift+9    move container to workspace  $ws9
 bindsym $mod+Shift+0    move container to workspace  $ws10
 
 # move focused container to workspace with numpad keys
-bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws1
-bindcode $mod+Shift+Mod2+88 	move container to workspace  $ws2
-bindcode $mod+Shift+Mod2+89 	move container to workspace  $ws3
-bindcode $mod+Shift+Mod2+83 	move container to workspace  $ws4
-bindcode $mod+Shift+Mod2+84 	move container to workspace  $ws5
-bindcode $mod+Shift+Mod2+85 	move container to workspace  $ws6
-bindcode $mod+Shift+Mod2+79 	move container to workspace  $ws7
-bindcode $mod+Shift+Mod2+80 	move container to workspace  $ws8
-bindcode $mod+Shift+Mod2+81 	move container to workspace  $ws9
-bindcode $mod+Shift+Mod2+90 	move container to workspace  $ws10
+# bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws1
+# bindcode $mod+Shift+Mod2+88 	move container to workspace  $ws2
+# bindcode $mod+Shift+Mod2+89 	move container to workspace  $ws3
+# bindcode $mod+Shift+Mod2+83 	move container to workspace  $ws4
+# bindcode $mod+Shift+Mod2+84 	move container to workspace  $ws5
+# bindcode $mod+Shift+Mod2+85 	move container to workspace  $ws6
+# bindcode $mod+Shift+Mod2+79 	move container to workspace  $ws7
+# bindcode $mod+Shift+Mod2+80 	move container to workspace  $ws8
+# bindcode $mod+Shift+Mod2+81 	move container to workspace  $ws9
+# bindcode $mod+Shift+Mod2+90 	move container to workspace  $ws10
 
 # move focused container to workspace with numpad keys
-bindcode $mod+Shift+87 	 move container to workspace  $ws1
-bindcode $mod+Shift+88 	 move container to workspace  $ws2
-bindcode $mod+Shift+89 	 move container to workspace  $ws3
-bindcode $mod+Shift+83 	 move container to workspace  $ws4
-bindcode $mod+Shift+84 	 move container to workspace  $ws5
-bindcode $mod+Shift+85 	 move container to workspace  $ws6
-bindcode $mod+Shift+79 	 move container to workspace  $ws7
-bindcode $mod+Shift+80 	 move container to workspace  $ws8
-bindcode $mod+Shift+81 	 move container to workspace  $ws9
-bindcode $mod+Shift+90 	 move container to workspace  $ws10
+# bindcode $mod+Shift+87 	 move container to workspace  $ws1
+# bindcode $mod+Shift+88 	 move container to workspace  $ws2
+# bindcode $mod+Shift+89 	 move container to workspace  $ws3
+# bindcode $mod+Shift+83 	 move container to workspace  $ws4
+# bindcode $mod+Shift+84 	 move container to workspace  $ws5
+# bindcode $mod+Shift+85 	 move container to workspace  $ws6
+# bindcode $mod+Shift+79 	 move container to workspace  $ws7
+# bindcode $mod+Shift+80 	 move container to workspace  $ws8
+# bindcode $mod+Shift+81 	 move container to workspace  $ws9
+# bindcode $mod+Shift+90 	 move container to workspace  $ws10
+
+# commands for workspaces on secondary monitor
+bindcode $mod+87 workspace $wse1
+bindcode $mod+88 workspace $wse2
+bindcode $mod+89 workspace $wse3
+bindcode $mod+83 workspace $wse4
+bindcode $mod+84 workspace $wse5
+bindcode $mod+Mod2+87 workspace $wse1
+bindcode $mod+Mod2+88 workspace $wse2
+bindcode $mod+Mod2+89 workspace $wse3
+bindcode $mod+Mod2+83 workspace $wse4
+bindcode $mod+Mod2+84 workspace $wse5
+bindcode $mod+Shift+87 	 move container to workspace  $wse1
+bindcode $mod+Shift+88 	 move container to workspace  $wse2
+bindcode $mod+Shift+89 	 move container to workspace  $wse3
+bindcode $mod+Shift+83 	 move container to workspace  $wse4
+bindcode $mod+Shift+84 	 move container to workspace  $wse5
+bindcode $mod+Shift+Mod2+87 	move container to workspace  $wse1
+bindcode $mod+Shift+Mod2+88 	move container to workspace  $wse2
+bindcode $mod+Shift+Mod2+89 	move container to workspace  $wse3
+bindcode $mod+Shift+Mod2+83 	move container to workspace  $wse4
+bindcode $mod+Shift+Mod2+84 	move container to workspace  $wse5
+
+# bindsym $mod+Ctrl+1 workspace $wse1
+# bindsym $mod+Ctrl+2 workspace $wse2
+# bindsym $mod+Ctrl+3 workspace $wse3
+# bindsym $mod+Ctrl+4 workspace $wse4
+# bindsym $mod+Ctrl+5 workspace $wse5
+# bindsym $mod+Ctrl+Shift+1 move container to workspace $wse1
+# bindsym $mod+Ctrl+Shift+2 move container to workspace $wse2
+# bindsym $mod+Ctrl+Shift+3 move container to workspace $wse3
+# bindsym $mod+Ctrl+Shift+4 move container to workspace $wse4
+# bindsym $mod+Ctrl+Shift+5 move container to workspace $wse5
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -166,7 +199,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+space workspace back_and_forth
+# bindsym $mod+space workspace back_and_forth
 
 ######################################
 # keybindings for different actions: #
@@ -182,14 +215,17 @@ bindsym $mod+q kill
 # bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 bindsym $mod+Shift+e exec sh ~/.config/rofi/bin/powermenu
 
+# screenlayout-menu
+bindsym $mod+Shift+d exec sh ~/.config/rofi/bin/screenlayout
+
 # Lock the system
 # lock with a picture:
-#bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+# bindsym $mod+l exec i3lock -i  ~/Pictures/Linox_Catppuccin.png -p default|win -t
 # lock by blurring the screen:
 # bindsym $mod+l exec ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
@@ -203,8 +239,8 @@ bindsym $mod+Shift+r restart
 # Backlight control
 # bindsym XF86MonBrightnessUp exec xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # bindsym XF86MonBrightnessDown exec xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-bindsym XF86MonBrightnessUp exec xbacklight +10 && notify-send "Brightness - $(xbacklight -get)"
-bindsym XF86MonBrightnessDown exec xbacklight -10 && notify-send "Brightness - $(xbacklight -get)"
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get)"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get)"
 
 # change focus
 bindsym $mod+j focus left
@@ -231,17 +267,17 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+g layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+a layout tabbed
 # bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -271,8 +307,8 @@ bindsym XF86AudioLowerVolume exec pamixer -d 5
 # && pkill -RTMIN+1 i3blocks
 # bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%-
 # && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioRaiseVolume exec pamixer -i 1
-bindsym $mod+XF86AudioLowerVolume exec pamixer -d 1
+# bindsym $mod+XF86AudioRaiseVolume exec pamixer -i 1
+# bindsym $mod+XF86AudioLowerVolume exec pamixer -d 1
 
 # mute
 # bindsym XF86AudioMute exec amixer sset Master toggle
@@ -284,6 +320,8 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bindsym $mod+x move workspace to output next
 
 # Redirect sound to headphones
 # bindsym $mod+p exec /usr/local/bin/switch-audio-port
@@ -302,12 +340,18 @@ bindsym $mod+m exec spotify-launcher
 bindsym $mod+p exec keepassxc
 bindsym $mod+e exec thunderbird
 bindsym $mod+c exec code
+bindsym $mod+shift+c exec chromium
+bindsym $mod+shift+w exec librewolf
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec sh ~/.config/rofi/bin/powerprofiles
 
+# change keyboard layout
+bindsym $mod+shift+space exec --no-startup-id sh ~/.config/i3/scripts/switch-keyboard-layout
+
 bindsym $mod+Shift+ctrl+a exec firefox https://www.uni-greifswald.de/storages/uni-greifswald/2_Studium/2.3_Mein_Studium/2.3.7_Formulare/ex_ant.pdf 
-bindsym $mod+Shift+Ctrl+e exec feh --bg-scale ~/Pictures/Erik_besser.png
+bindsym $mod+Shift+Ctrl+e exec feh --bg-scale ~/Dotfiles/other/pictures/Erik_besser.png
+bindsym $mod+Shift+Ctrl+r exec feh --bg-fill ~/Dotfiles/other/pictures/bild_ratte.jpg
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -322,25 +366,38 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-# set $ws8 "8:󰌆"
 set $ws8 "8"
-# set $ws9 "9:󰝚"
 set $ws9 "9"
-# set $ws10 "10:"
 set $ws10 "10"
+set $wse1 "E1"
+set $wse2 "E2"
+set $wse3 "E3"
+set $wse4 "E4"
+set $wse5 "E5"
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+workspace $ws1 output eDP
+workspace $ws2 output eDP
+workspace $ws3 output eDP
+workspace $ws4 output eDP
+workspace $ws5 output eDP
+workspace $ws6 output eDP
+workspace $ws7 output eDP
+workspace $ws8 output eDP
+workspace $ws9 output eDP
+workspace $ws10 output eDP
+workspace $wse1 output HDMI-A-0
+workspace $wse2 output HDMI-A-0
+workspace $wse3 output HDMI-A-0
+workspace $wse4 output HDMI-A-0
+workspace $wse5 output HDMI-A-0
 
 # bind program to workspace and focus to them on startup:
 # assign [class="kitty"] $ws1
 assign [class="(?i)firefox"] $ws10
+assign [class="LibreWolf"] $ws10
 # assign [class="Thunar"] $ws3
 assign [class="Signal"] $ws6
 assign [class="TelegramDesktop"] $ws6
@@ -352,6 +409,7 @@ assign [class="Spotify"] $ws9
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=kitty] focus
 for_window [class="(?i)firefox"] focus
+for_window [class="LibreWolf"] focus
 for_window [class="Signal"] focus
 for_window [class="TelegramDesktop"] focus
 for_window [class="thunderbird"] focus
@@ -426,13 +484,12 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
-# exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/Galaxy_blue_purple.jpg
-exec --no-startup-id sleep 1 && feh --bg-fill ~/Pictures/Catppuccin_cat_with_city.png
+exec --no-startup-id sleep 1 && feh --bg-fill ~/Dotfiles/other/pictures/Catppuccin_cat_with_city.png
 # set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
+# exec --no-startup-id xset s 480 dpms 600 600 600
 
 # disable power saving (for example if using xscreensaver)
-# exec --no-startup-id xset -dpms
+exec --no-startup-id xset -dpms
 
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
@@ -441,7 +498,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
-#exec --no-startup-id xscreensaver --no-splash
+exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
 # dunst config used ~/.config/dunst/dunstrc
@@ -459,15 +516,17 @@ exec --no-startup-id dunst
 exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-# exec --no-startup-id sleep 2 && kitty
-#exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
-#exec --no-startup-id sleep 3 && thunar
 exec --no-startup-id sleep 1 && keepassxc
-# exec --no-startup-id sleep 2 && spotify-launcher
-# exec --no-startup-id sleep 3 && firefox
 
 # Autostart redshift
 exec --no-startup-id redshift -l 54.09311:13.38786
+
+# caps lock -> ctrl
+exec --not-startup-id setxkbmap -layout de -variant nodeadkeys -option caps:ctrl_modifier
+
+# software for logitech stuff in office
+exec --no-startup-id solaar -w hide
+
 
 ###############
 # system tray #

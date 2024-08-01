@@ -20,7 +20,7 @@ window {
     border:                  	    3px;
     border-color:                   @BDR;
     border-radius:                  10px;
-    width:                          110px;
+    width:                          300px;
     x-offset:                       -1%;
     y-offset:                       0;
 }
@@ -38,7 +38,7 @@ prompt {
 
 textbox-prompt-colon {
     expand: 			            false;
-    str: 			                "";
+    str: 			                "󰍹 ";
     border-radius:                  100%;
     background-color:               @BG;
     text-color:                     @BG;
@@ -83,7 +83,7 @@ case-indicator {
 listview {
     background-color:               @BG;
     columns:                        1;
-    lines:			                5;
+    lines:			                6;
     spacing:                        15px;
     cycle:                          true;
     dynamic:                        true;

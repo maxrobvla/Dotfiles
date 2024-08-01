@@ -8,3 +8,5 @@ set statusbar-home-tilde true
 
 set synctex true
 set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
+
+set guioptions none

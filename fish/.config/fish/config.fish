@@ -3,15 +3,15 @@ if status is-interactive
 end
 
 # setup rust
-source "$HOME/.cargo/env"
+fish_add_path $HOME/.cargo/bin
 
 # aliases and functions
 alias icat="kitty +kitten icat"
 alias v="nvim"
-alias skat="~/Downloads/skat -font 6x13 -lang german"
 alias screenshot="maim -s -D -c 1,0,0 -b 5 | xclip -selection clipboard -t image/png"
 alias s="kitten ssh"
-alias z="zellij"
+alias y="yazi"
+alias zj="zellij"
 alias zfp="zellij plugin -- filepicker"
 alias fct="ls | wc -l"
 alias ll="eza -la --icons=always --no-user --no-time --no-permissions"
@@ -30,4 +30,8 @@ alias av="cd ~/OneDrive/#Studium/Physik SoSe2024/Bachelor-Arbeit/Anti-Vicsek/Sim
 # environment variables
 export EDITOR=nvim
 
+function starship_transient_prompt_func
+  starship module character
+end
 starship init fish | source
+enable_transience

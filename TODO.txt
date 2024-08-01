@@ -1,0 +1,7 @@
+download & install the following packages
+
+ZSH
+antigen
+
+YAZI
+bat.yazi
