@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+rofi_command="rofi -theme $HOME/.config/rofi/config/screenlayout_other.rasi"
+
+# Options
+wqhddp="Office extend"
+wqhd1="1440p only"
+wqhd2="1440p extend"
+fhd1="1080p only"
+fhd2="1080p mirror"
+ddir="$HOME/.config/rofi/config"
+
+options="$wqhddp\n$wqhd1\n$wqhd2\n$fhd1\n$fhd2"
+
+
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
+notify-send $chosen
+case $chosen in
+    $wqhd1)
+        ~/.config/rofi/screenlayouts/Office_2.sh
+        notify-send $wqhddp
+        ;;
+    $wqhd1)
+        ~/.config/rofi/screenlayouts/WQHD-only.sh
+        notify-send $wqhd1
+        ;;
+    $wqhd2)
+        ~/.config/rofi/screenlayouts/WQHD-extend.sh
+        notify-send $wqhd2
+        ;;
+    $fhd1)
+        ~/.config/rofi/screenlayouts/FHD-only.sh
+        notify-send $fhd1
+        ;;
+    $fhd2)
+        ~/.config/rofi/screenlayouts/FHD-mirror.sh
+        notify-send $fhd2
+        ;;
+esac
+
