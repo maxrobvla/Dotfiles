@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+rofi_command="rofi -theme $HOME/.config/rofi/config/screenlayout.rasi"
+
+# Options
+laptop="Default"
+office="Office" # 1440p dp only
+present="Present" # 1080p extend
+other="Other" # open menu with other options
+ddir="$HOME/.config/rofi/config"
+
+options="$laptop\n$office\n$present\n$other"
+
+
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
+notify-send $chosen
+case $chosen in
+    $laptop)
+        ~/.config/rofi/screenlayouts/Default.sh
+        notify-send $laptop
+        ;;
+    $office)
+        ~/.config/rofi/screenlayouts/Office_1.sh
+        notify-send $office
+        ;;
+    $present)
+        ~/.config/rofi/screenlayouts/FHD-extend.sh
+        notify-send $present
+        ;;
+    $other)
+        sh ~/.config/rofi/bin/screenlayout_other
+        ;;
+esac
+
