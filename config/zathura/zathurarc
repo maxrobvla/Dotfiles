@@ -5,6 +5,8 @@ set font "CaskaydiaCove Nerd Font Mono 16"
 set selection-clipboard clipboard
 set adjust-open "best fit"
 set statusbar-home-tilde true
+# set window-title-home-tilde true
+set window-title-basename true
 
 set synctex true
 set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"

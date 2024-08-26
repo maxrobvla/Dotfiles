@@ -1,0 +1,522 @@
+snippet newtex "template for document"
+	\\documentclass[11pt,ngerman]{article}
+	\\usepackage[a4paper,left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+	\\usepackage[utf8]{inputenc}
+	\\usepackage[T1]{fontenc}
+	\\usepackage{babel}
+	\\usepackage{booktabs}
+	\\usepackage{latexsym}
+	\\usepackage{amsmath}
+	\\usepackage{amsfonts}
+	\\usepackage{amssymb}
+	\\usepackage{textcomp}
+	\\usepackage{listings}
+	\\usepackage{graphicx}
+	\\usepackage{colortbl}
+	\\usepackage{float}
+	\\usepackage[version=4]{mhchem}
+	\\usepackage{physics}
+	\\usepackage[locale=DE, per-mode=fraction]{siunitx}
+	\\usepackage{tensor}
+	\\usepackage{fancyhdr}
+	\\newenvironment{numeq}{\\subequations\\align}{\\endalign\\endsubequations}
+
+	\\let\\originalvec\\vec
+	\\renewcommand\\vec[1]{\\originalvec{\\kern0pt #1}}
+	\\newcommand*\\pvec[1]{\\vec{#1}\\mkern2mu\\vphantom{#1}}
+
+	\\renewcommand{\\div}{\\mathrm{div}\\,}
+	\\newcommand{\\rot}{\\mathrm{rot}\\,}
+	\\renewcommand{\\grad}{\\mathrm{grad}\\,}
+	\\renewcommand{\\Re}{\\mathrm{Re}}
+	\\renewcommand{\\Im}{\\mathrm{Im}}
+	
+	\\newcommand{\\qm}[1]{\\glqq{}#1\\grqq{}}
+
+	\\AtBeginDocument{\\RenewCommandCopy\\qty\\SI}
+    \\ExplSyntaxOn
+    \\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+    \\ExplSyntaxOff
+
+	\\setlength{\\parindent}{0cm}
+
+	% header and footer stuff
+	\\newcommand\\course{${1:Kurs}}
+	\\newcommand\\semester{SoSe 2024}
+	\\newcommand\\doctitle{${2:Dokumententitel}}
+	\\renewcommand\\author{Max-Robin Schultz}
+	\\newcommand\\matrikelnr{166254}
+
+	\\pagestyle{fancy}
+	\\setlength{\\headheight}{26pt}
+	\\fancyhead[L]{\\course \\break \\semester}
+	\\fancyhead[C]{\\textbf{\\large{\\doctitle}}}
+	\\fancyhead[R]{\\author \\break Matrikel-Nr. \\matrikelnr}
+	\\fancyfoot[L,R]{}
+	\\fancyfoot[C]{\\thepage}
+
+	\\DeclareSIUnit{\\angstrom}{\\textup{\\AA}}
+
+    \\newcommand{\\vsb}{\\vspace{\\baselineskip}}
+
+	\\begin{document}
+	
+	${3:[Inhalt]}$0
+	
+	\\end{document}
+
+snippet newtheo "additional stuff for theoretical physics preamble"
+    \\usepackage{amsthm}
+    \\usepackage{empheq}
+
+    \\newtheorem{definition}{Definition}[section]
+
+    \\theoremstyle{definition}
+    \\newtheorem*{remark}{Bemerkung}
+    \\newtheorem*{example}{Beispiel}
+
+    \\newcommand{\\vsb}{\\vspace{\\baselineskip}}
+
+snippet BENV "\begin{} ... \end{} block"
+	\\begin{${1:env}}
+		$0
+	\\end{$1}
+
+snippet BAL "align env"
+	\\begin{align}
+		$0
+	\\end{align}
+
+snippet BSAL "align* env"
+	\\begin{align*}
+		$0
+	\\end{align*}
+
+snippet BIT "itemize env"
+	\\begin{itemize}
+		\\item $0
+	\\end{itemize}
+
+snippet BEN "enumerate env"
+	\\begin{enumerate}
+		\\item $0
+	\\end{enumerate}
+
+snippet @it "item"
+	\\item $0
+
+snippet BMT "matrix"
+	\\begin{$1matrix}
+		$0
+	\\end{$1matrix}
+
+snippet BPMT "pmatrix" 
+	\\begin{pmatrix}
+		$0
+	\\end{pmatrix}
+
+snippet @a "alpha"
+	\\alpha $0
+
+snippet @b "beta"
+	\\beta $0
+
+snippet @g "gamma"
+	\\gamma $0
+
+snippet @d "delta"
+	\\delta $0
+
+snippet @e "varepsilon"
+	\\varepsilon $0
+
+snippet @f "varphi"
+	\\varphi $0
+
+snippet @h "eta"
+	\\eta $0
+
+snippet @k "kappa"
+	\\kappa $0
+
+snippet @l "lambda"
+	\\lambda $0
+
+snippet @t "vartheta"
+	\\vartheta $0
+
+snippet @r "varrho"
+	\\varrho $0
+
+snippet @o "omega"
+	\\omega $0
+
+snippet @D "Delta"
+	\\Delta $0
+
+snippet @G "Gamma"
+	\\Gamma $0
+
+snippet @L "Lambda"
+	\\Lambda $0
+
+snippet @O "Omega"
+	\\Omega $0
+
+snippet @( "\left( ... \right)"
+	\\left( $1 \\right) $0
+
+snippet @[ "\left[ .. \right]"
+	\\left[ $1 \\right] $0
+
+snippet @{ "\left\{ ... \right\}"
+	\\left\\{ $1 \\right\\} $0
+
+snippet @< "\left\langle ... \right\rangle"
+	\\left\\langle $1 \\right\\rangle $0
+
+snippet @8 "infty"
+	\\infty $0
+
+snippet @6 "partial"
+	\\partial $0
+
+snippet MRM "math roman font"
+	\\mathrm{$1} $0
+
+snippet MCA "math caligraphic font"
+	\\mathcal{$1} $0
+
+snippet MBB "math font for sets"
+	\\mathbb{$1} $0
+
+snippet BNE "numbered equation env (custom env)"
+	\\begin{numeq}
+		$0
+	\\end{numeq} 
+
+snippet @I "integral with limits"
+	\\int_{$1}^{$2} $0
+
+snippet @ID "integral with limits and differential"
+	\\int_{$2}^{$3} \\dd{$1} $0
+
+snippet @MID "integral with limits and differential and integrand in the middle"
+	\\int_{$2}^{$3} $4 \\dd{$1} $0
+
+snippet ra "\rightarrow"
+	\\rightarrow $0
+
+snippet qrq "\rightarrow with spaces"
+	\\quad\\rightarrow\\quad $0
+
+snippet rq "\rightarrow with space on the right"
+	\\rightarrow\\quad $0
+
+snippet RA "\Rightarrow"
+	\\Rightarrow $0
+
+snippet QRQ "\Rightarrow with spaces"
+	\\quad\\Rightarrow\\quad $0
+
+snippet RQ "\Rightarrow with space on the right"
+	\\Rightarrow\\quad $0
+
+snippet @2 "square root"
+	\\sqrt{$1} $0
+
+snippet frac "fraction"
+	\\frac{$1}{$2} $0
+
+snippet sum "sum"
+	\\sum_{$1}^{$2} $0
+
+snippet prod "product"
+    \\prod_{$1}^{$2} $0
+
+snippet lim "limit"
+	\\lim_{$1} $0
+
+snippet stack "stackrel"
+	\\stackrel{$2}{$1} $0
+
+snippet fig "figure with includegraphics"
+	\\begin{figure}[H]
+		\\centering
+		\\includegraphics[$2]{$1}
+		\\caption{$3}
+		\\label{$4}
+	\\end{figure} $0
+
+snippet tab "table"
+	\\begin{table}[H]
+		\\centering
+		\\caption{$1}
+		\\label{$2}
+		\\begin{tabular}{$3}
+			$0
+		\\end{tabular}
+	\\end{table}
+
+snippet __ "subscript in math mode"
+	_{$1} $0
+
+snippet ^^ "superscript in math mode"
+	^{$1} $0
+
+snippet TSC "smallcaps font"
+	\\textsc{$1} $0
+
+snippet TUL "underline"
+	\\underline{$1} $0
+
+snippet TEM	"emph"
+	\\emph{$1} $0
+
+snippet TBF "bold"
+    \\textbf{$1} $0
+
+snippet sc "section*"
+	\\section*{$1}
+	$0
+
+snippet ssc "subsection*"
+	\\subsection*{$1}
+	$0
+
+snippet sssc "subsubsection*"
+	\\subsubsection*{$1}
+	$0
+
+snippet nsc "numbered section"
+	\\section{$1}
+	$0
+
+snippet nssc "numbered subsection"
+	\\subsection{$1}
+	$0
+
+snippet nsssc "numbered subsubsection"
+	\\subsubsection{$1}
+	$0
+
+snippet @T0 "task without subtasks"
+	\\section*{Aufgabe $1}
+	$0
+
+
+
+snippet @Ta "task with 1 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+
+snippet @Tb "task with 2 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+
+snippet @Tc "task with 3 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+	\\subsection*{Teilaufgabe c}
+
+
+
+
+snippet @Td "task with 4 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+	\\subsection*{Teilaufgabe c}
+
+
+
+	\\subsection*{Teilaufgabe d}
+
+
+
+
+snippet @Te "task with 5 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+	\\subsection*{Teilaufgabe c}
+
+
+
+	\\subsection*{Teilaufgabe d}
+
+
+
+	\\subsection*{Teilaufgabe e}
+
+
+
+
+snippet @Tf "task with 6 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+	\\subsection*{Teilaufgabe c}
+
+
+
+	\\subsection*{Teilaufgabe d}
+
+
+
+	\\subsection*{Teilaufgabe e}
+
+
+
+	\\subsection*{Teilaufgabe f}
+
+
+
+
+snippet @Tg "task with 7 subtask"
+	\\section*{Aufgabe $1}
+
+	\\subsection*{Teilaufgabe a}
+	$0
+
+
+	\\subsection*{Teilaufgabe b}
+
+
+
+	\\subsection*{Teilaufgabe c}
+
+
+
+	\\subsection*{Teilaufgabe d}
+
+
+
+	\\subsection*{Teilaufgabe e}
+
+
+
+	\\subsection*{Teilaufgabe f}
+
+
+
+	\\subsection*{Teilaufgabe h}
+
+
+
+
+snippet dv "derivative (physics package)"
+	\\dv{$1}{$2} $0
+
+snippet pdv "partial derivative (physics package)"
+	\\pdv{$1}{$2} $0
+
+snippet ndv "nth derivative (physics package)"
+	\\dv[$1]{$2}{$3} $0
+
+snippet npdv "nth partial derivative (physics package)"
+	\\pdv[$1]{$2}{$3} $0
+
+snippet @id "integral with differential without limits"
+	\\int \\dd{$1} $0
+
+snippet @mid "integral with differential without limits and integrand in the middle"
+	\\int $2 \\dd{$1} $0
+
+snippet LRA "\Leftrightarrow"
+	\\Leftrightarrow $0
+
+snippet QLRQ "\Leftrightarrow with spaces"
+	\\quad\\Leftrightarrow\\quad $0
+
+snippet LRQ "\Leftrighatrrow with space on the right"
+	\\Leftrightarrow\\quad $0
+
+snippet @mt "\mapsto"
+	\\mapsto $0
+
+snippet @abs "\abs"
+	\\abs{$1} $0
+
+snippet @dd "\dd"
+	\\dd{$1} $0
+
+snippet @= "\equiv"
+	\\equiv $0
+
+snippet @qq "\qq (physics package)"
+	\\qq{$1} $0
+
+snippet @qs "\qq* (physics package)"
+	\\qq*{$1} $0
+
+snippet @txt "\text"
+	\\text{$1} $0
+
+snippet @$ "$ ... $"
+	$$1$ $0
+
+snippet @oid "integral over closed path with differential"
+	\\oint_{$2} \\dd{$1} $0
+
+snippet @v "\vb* (physics package)"
+    \\vb*{$1} $0
+
+snippet @qk "\ket (physics package)"
+    \\ket{$1} $0
+
+snippet @qb "\bra (physics package)"
+    \\bra{$1} $0
+
+snippet @qev "\expval (physics package)"
+    \\ev{$1}{$2} $0
+
+snippet @qop "\operator (physics package)"
+    \\op{$1}{$2} $0
+
+snippet @qmel "\matrixel (physics package)"
+    \\mel{$1}{$2}{$3} $0
+
+snippet @qip "\braket (physics package)"
+    \\ip{$1}{$2} $0

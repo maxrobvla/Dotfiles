@@ -57,10 +57,14 @@ alias man='batman'
 alias vpnon="nmcli c up vpn-profile-uni-greifswald"
 alias vpnoff="nmcli c down vpn-profile-uni-greifswald"
 alias fishies="asciiquarium"
+alias venv="source ~/.venv/bin/activate"
 
 export PAGER=bat
 
 export EDITOR=nvim
+
+# only used for pipx
+export PATH=$PATH:/home/maxrob/.local/bin
 
 # echo "\e[1;33m󰄛 \e[0m"
 

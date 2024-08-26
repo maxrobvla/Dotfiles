@@ -1,6 +1,5 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -75,6 +74,10 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -498,7 +501,24 @@ require('lazy').setup({
             local servers = {
                 clangd = {},
                 gopls = {},
-                pylsp = {},
+                pylsp = {
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                -- formatter options
+                                autopep8 = { enabled = false },
+                                yapf = { enabled = false },
+                                -- linter options
+                                mccabe = { enabled = true },
+                                pyflakes = { enabled = false },
+                                pycodestyle = { enabled = true, maxLineLength = 100 },
+                                -- auto-completion options
+                                jedi_completion = { fuzzy = true },
+                                rope_autoimport = { completions = true },
+                            },
+                        },
+                    },
+                },
                 rust_analyzer = {},
                 marksman = {},
                 texlab = {
@@ -563,7 +583,10 @@ require('lazy').setup({
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
                 'clangd',
-                'black',
+                -- python stuff
+                'ruff',
+                'mypy',
+
                 'latexindent',
                 'typstfmt',
             })
@@ -613,7 +636,7 @@ require('lazy').setup({
                 lua = { 'stylua' },
                 cpp = { 'clang-format' },
                 -- Conform can also run multiple formatters sequentially
-                python = { 'blue' },
+                python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
                 tex = { 'latexindent' },
                 typst = { 'typstfmt' },
                 --
@@ -846,22 +869,8 @@ require('lazy').setup({
 
     -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
     --
-    --  Here are some example plugins that I've included in the Kickstart repository.
-    --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-    --
-    -- require 'kickstart.plugins.debug',
-    -- require 'kickstart.plugins.indent_line',
-    -- require 'kickstart.plugins.lint',
-    require 'kickstart.plugins.autopairs',
-    require 'kickstart.plugins.neo-tree',
-    -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-
-    -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-    --    This is the easiest way to modularize your config.
-    --
-    --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
     --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-    { import = 'custom.plugins' },
+    { import = 'plugins' },
 }, {
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -883,6 +892,37 @@ require('lazy').setup({
         },
     },
 })
+
+local mocha = require('catppuccin.palettes').get_palette 'mocha'
+
+-- FIX: doesn't work
+-- integratrion of indent-blank-line with rainbow-delimiters
+local highlight = {
+    'RainbowRed',
+    'RainbowYellow',
+    'RainbowBlue',
+    'RainbowOrange',
+    'RainbowGreen',
+    'RainbowViolet',
+    'RainbowCyan',
+}
+local hooks = require 'ibl.hooks'
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, 'RainbowRed', { fg = mocha.red })
+    vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = mocha.yellow })
+    vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = mocha.blue })
+    vim.api.nvim_set_hl(0, 'RainbowOrange', { fg = mocha.peach })
+    vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = mocha.green })
+    vim.api.nvim_set_hl(0, 'RainbowViolet', { fg = mocha.mauve })
+    vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = mocha.sky })
+end)
+
+vim.g.rainbow_delimiters = { highlight = highlight }
+require('ibl').setup { scope = { highlight = highlight }, indent = { highlight = highlight } }
+
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 
 -- set other keymaps for plugins
 local keys = vim.keymap.set

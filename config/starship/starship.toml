@@ -13,6 +13,9 @@ $cmd_duration\
 [ ](fg:maroon)\
 $character\
 """
+right_format = """
+$python
+"""
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
@@ -104,10 +107,10 @@ style = "bg:maroon fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [python]
-disabled = true
+disabled = false
 symbol = " "
-style = "bg:maroon fg:base"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:base fg:maroon"
+format = '[${symbol}($virtualenv)]($style)'
 
 [time]
 disabled = false

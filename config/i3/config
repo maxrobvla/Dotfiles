@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Cascadia Mono 10
+font pango: Cascadia Mono 16
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -276,9 +276,8 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+a layout tabbed
-# bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 # bindsym $mod+Shift+space floating toggle
@@ -331,6 +330,7 @@ bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 # bindsym Print exec scrot ~/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym Print exec "maim -s -D -c 1,0,0 -b 5 | xclip -selection clipboard -t image/png"
+bindsym $mod+shift+s exec "maim -s -D -c 1,0,0 -b 5 | xclip -selection clipboard -t image/png"
 
 # bindsym Print exec "maim -s -D -c 1,0,0 -b 5 ~/Pictures/screenshots/$(date +%Y-%m-%d-%T)-screenshot.png | xclip -selection clipboard -t image/png" && notify-send "Screenshot saved to ~/Pictures/screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -348,7 +348,7 @@ bindsym $mod+j exec joplin-desktop
 bindsym $mod+Shift+p exec sh ~/.config/rofi/bin/powerprofiles
 
 # change keyboard layout
-bindsym $mod+shift+space exec --no-startup-id sh ~/.config/i3/scripts/switch-keyboard-layout
+# bindsym $mod+shift+space exec --no-startup-id sh ~/.config/i3/scripts/switch-keyboard-layout
 
 bindsym $mod+Shift+ctrl+a exec firefox https://www.uni-greifswald.de/storages/uni-greifswald/2_Studium/2.3_Mein_Studium/2.3.7_Formulare/ex_ant.pdf 
 bindsym $mod+Shift+Ctrl+e exec feh --bg-scale ~/.config/assets/pictures/Erik_besser.png
@@ -499,7 +499,7 @@ exec --no-startup-id xset -dpms
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
-exec --no-startup-id xscreensaver --no-splash
+# exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
 # dunst config used ~/.config/dunst/dunstrc
@@ -522,8 +522,8 @@ exec --no-startup-id sleep 1 && keepassxc
 # Autostart redshift
 exec --no-startup-id redshift -l 54.09311:13.38786
 
-# caps lock -> ctrl
-exec --not-startup-id setxkbmap -layout de -variant nodeadkeys -option caps:ctrl_modifier
+# disable dead_keys
+exec_always --no-startup-id setxkbmap -variant nodeadkeys
 
 # software for logitech stuff in office
 exec --no-startup-id solaar -w hide
@@ -578,19 +578,6 @@ for_window [class="urxvt"] border pixel 1
 # color settings for bar and windows #
 ######################################
 
-# Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-
 # define catppuccin color palette
 set $crust #11111b
 set $mantle #181825
@@ -621,10 +608,10 @@ set $rosewater #f5e0dc
 
 # define colors for windows:
 #class		        	    border		bground		text		indicator	child_border
-client.focused		    	$blue	    $blue	    $text		$subtext1	$subtext1
-client.unfocused	    	$mauve	    $mauve  	$subtext1	$subtext0	$subtext0
-client.focused_inactive		$maroon	    $maroon	    $subtext1	$base		$base
-client.urgent		    	$red	    $red	    $text		$yellow	    $yellow
+client.focused		    	$base	    $blue	    $base		$subtext1	$subtext1
+client.unfocused	    	$base	    $mauve  	$base   	$subtext0	$subtext0
+client.focused_inactive		$base	    $maroon	    $base   	$base		$base
+client.urgent		    	$base	    $red	    $base		$yellow	    $yellow
 
 ############################################
 # bar settings (input comes from i3blocks) #
