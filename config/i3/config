@@ -357,6 +357,9 @@ bindsym XF86Calculator exec galculator
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec sh ~/.config/rofi/bin/powerprofiles
 
+# bluetooth control
+bindsym $mod+b exec sh ~/.config/rofi/bin/bluetooth
+
 # change keyboard layout
 # bindsym $mod+shift+space exec --no-startup-id sh ~/.config/i3/scripts/switch-keyboard-layout
 

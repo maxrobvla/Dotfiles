@@ -63,6 +63,8 @@ export PAGER=bat
 
 export EDITOR=nvim
 
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 # only used for pipx
 export PATH=$PATH:/home/maxrob/.local/bin
 
