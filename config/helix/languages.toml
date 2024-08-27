@@ -49,3 +49,4 @@ args = ["--synctex-forward", "%l:1:%f", "%p"]
 [[language]]
 name = "latex"
 auto-format = true
+language-servers = ["texlab"]
