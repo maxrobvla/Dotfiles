@@ -20,6 +20,7 @@ eval "$(starship init zsh)"
 # remove weird keybindings (find all keybindings from shell with "bindkey")
 bindkey -r "^[n"
 bindkey -r "^[p"
+# bindkey -r "^g"
 bindkey '^H' backward-kill-word
 
 source ~/.custom_commands.sh
@@ -36,6 +37,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+alias yy="yazi"
 
 alias icat="kitty +kitten icat"
 alias v="nvim"
@@ -45,7 +47,7 @@ alias s="kitten ssh"
 alias brain="ssh s-mbschu@brain.uni-greifswald.de"
 alias zj="zellij"
 alias fct="ls | wc -l"
-alias ll="eza -la --icons=always --no-user --no-time --no-permissions"
+alias ll="eza -la --icons=always --no-user"
 alias l="eza -a --icons=always"
 alias hx="helix"
 alias nvc='NVIM_APPNAME="nvim-nvchad" nvim'
@@ -57,7 +59,7 @@ alias man='batman'
 alias vpnon="nmcli c up vpn-profile-uni-greifswald"
 alias vpnoff="nmcli c down vpn-profile-uni-greifswald"
 alias fishies="asciiquarium"
-alias venv="source ~/.venv/bin/activate"
+alias py="ptpython"
 
 export PAGER=bat
 
@@ -65,9 +67,20 @@ export EDITOR=nvim
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 
+export VDPAU_DRIVER=va_gl
+
 # only used for pipx
 export PATH=$PATH:/home/maxrob/.local/bin
 
-# echo "\e[1;33m󰄛 \e[0m"
+# python stuff
+source ~/.venv/bin/activate
+export PYTHONSTARTUP=~/.default_python_repl.py
 
-# source /home/maxrob/.config/zellij/zsh.sh
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/maxrob/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

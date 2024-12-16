@@ -13,9 +13,9 @@ $cmd_duration\
 [ ](fg:maroon)\
 $character\
 """
-right_format = """
-$python
-"""
+# right_format = """
+# $python
+# """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false

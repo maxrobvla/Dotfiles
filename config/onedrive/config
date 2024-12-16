@@ -6,9 +6,9 @@
 # For explanations of all config options below see docs/USAGE.md or the man page.
 #
 # sync_dir = "~/OneDrive"
-skip_file = "~*|.~*|*.tmp|*.dat|*.avi|*.aux|*.fdb_latexmk|*.fls|*.synctex.gz"
+skip_file = "~*|.~*|*.tmp|*.dat|*.avi|*.aux|*.fdb_latexmk|*.fls|*.synctex.gz|*.run.xml|*.nav|*.blg|*.snm|*.toc|*.out|*.bcf|*.bbl"
 # monitor_interval = "300"
-# skip_dir = ""
+skip_dir = "Bilder/Samsung-Katalog"
 # log_dir = "/var/log/onedrive/"
 # drive_id = ""
 # upload_only = "false"

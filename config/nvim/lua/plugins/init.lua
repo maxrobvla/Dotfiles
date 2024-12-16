@@ -33,20 +33,27 @@ return {
 
     -- markdown
     {
-        'MeanderingProgrammer/markdown.nvim',
-        ft = 'markdown',
-        name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter', -- Mandatory
-            'nvim-tree/nvim-web-devicons', -- Optional but recommended
-        },
-        config = function()
-            require('render-markdown').setup {}
-        end,
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {},
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     },
+    -- {
+    --     'MeanderingProgrammer/render-markdown.nvim',
+    --     ft = 'markdown',
+    --     dependencies = {
+    --         'nvim-treesitter/nvim-treesitter', -- Mandatory
+    --         'nvim-tree/nvim-web-devicons', -- Optional but recommended
+    --     },
+    --     config = function()
+    --         require('render-markdown').setup {}
+    --     end,
+    -- },
     {
-        'kaarmu/typst.vim',
-        ft = 'typst',
-        lazy = false,
+        'chomosuke/typst-preview.nvim',
+        lazy = false, -- or ft = 'typst'
+        version = '1.*',
+        opts = {
+            open_cmd = 'vimb %s',
+        }, -- lazy.nvim will implicitly calls `setup {}`
     },
 }

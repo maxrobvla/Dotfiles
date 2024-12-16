@@ -343,16 +343,18 @@ bindsym $mod+shift+s exec "maim -s -D -c 1,0,0 -b 5 | xclip -selection clipboard
 bindsym $mod+m exec spotify-launcher
 bindsym $mod+p exec keepassxc
 bindsym $mod+e exec thunderbird
+bindsym $mod+ctrl+e exec emacs
 bindsym $mod+c exec code
 bindsym $mod+shift+c exec chromium
 bindsym $mod+shift+w exec librewolf
 bindsym $mod+j exec joplin-desktop
+bindsym $mod+z exec zotero
 
 bindsym XF86Messenger exec thunderbird
 bindsym XF86Go exec telegram-desktop
 bindsym Cancel exec discord
 bindsym XF86Favorites exec rofi -show drun
-bindsym XF86Calculator exec galculator
+bindsym XF86Calculator exec kalgebra
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec sh ~/.config/rofi/bin/powerprofiles
@@ -392,11 +394,11 @@ set $wse5 "E5"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output eDP
-workspace $ws2 output eDP
-workspace $ws3 output eDP
-workspace $ws4 output eDP
-workspace $ws5 output eDP
+workspace $ws1 output DisplayPort-1
+workspace $ws2 output DisplayPort-1
+workspace $ws3 output DisplayPort-1
+workspace $ws4 output DisplayPort-1
+workspace $ws5 output DisplayPort-1
 workspace $ws6 output eDP
 workspace $ws7 output eDP
 workspace $ws8 output eDP
@@ -462,6 +464,9 @@ for_window [class="Spotify"] focus
 # for custom config:
 exec_always --no-startup-id picom --config  ~/.config/picom/picom.conf
 
+# disable bluetooth on startup
+exec --no-startup-id bluetoothctl power off
+
 # exec_always --no-startup-id activate-linux
 
 #############################################
@@ -498,7 +503,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
 # exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
-exec --no-startup-id sleep 1 && feh --bg-fill ~/.config/assets/pictures/Catppuccin_cat_with_city.png
+exec_always --no-startup-id sleep 1 && feh --bg-fill ~/.config/assets/pictures/Catppuccin_cat_with_city.png
 # set powersavings for display:
 # exec --no-startup-id xset s 480 dpms 600 600 600
 

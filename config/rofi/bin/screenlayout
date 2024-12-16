@@ -2,13 +2,16 @@
 rofi_command="rofi -theme $HOME/.config/rofi/config/screenlayout.rasi"
 
 # Options
-laptop="Default"
-office="Office" # 1440p dp only
+laptop="Laptop"
+office1="Office 1" # 1440p dp only
+office2="Office 2" # 2x 1440p (1 vertical, 1 horizontal)
+office3="Office 3" # 2x 1440p + laptop
 present="Present" # 1080p extend
-other="Other" # open menu with other options
+# other="Other" # open menu with other options
 ddir="$HOME/.config/rofi/config"
 
-options="$laptop\n$office\n$present\n$other"
+# options="$laptop\n$office1\n$office2\n$present\n$other"
+options="$laptop\n$office1\n$office2\n$office3\n$present"
 
 
 chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
@@ -18,16 +21,23 @@ case $chosen in
         ~/.config/rofi/screenlayouts/Default.sh
         notify-send $laptop
         ;;
-    $office)
+    $office1)
         ~/.config/rofi/screenlayouts/Office_1.sh
-        notify-send $office
+        notify-send $office1
+        ;;
+    $office2)
+        ~/.config/rofi/screenlayouts/Office_2.sh
+        notify-send $office2
+        ;;
+    $office3)
+        ~/.config/rofi/screenlayouts/Office_3.sh
+        notify-send $office3
         ;;
     $present)
         ~/.config/rofi/screenlayouts/FHD-extend.sh
         notify-send $present
         ;;
-    $other)
-        sh ~/.config/rofi/bin/screenlayout_other
-        ;;
+    # $other)
+    #     sh ~/.config/rofi/bin/screenlayout_other
+    #     ;;
 esac
-

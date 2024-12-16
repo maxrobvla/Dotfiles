@@ -83,7 +83,7 @@ case-indicator {
 listview {
     background-color:               @BG;
     columns:                        1;
-    lines:			                4;
+    lines:			                5;
     spacing:                        15px;
     cycle:                          true;
     dynamic:                        true;

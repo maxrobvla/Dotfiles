@@ -31,13 +31,13 @@
     width = (250, 400)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 250
+    height = (0, 250)
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 12x47
+    offset = (12, 47)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -307,7 +307,7 @@
     icon = /usr/share/icons/Arc-X-D/status/16/dialog-information.png
 
 [urgency_normal]
-    pbackground = "#1E1E2E"
+    background = "#1E1E2E"
     foreground = "#CDD6F4"
     #background = "#0d0f18"
     #foreground = "#a5b6cf"

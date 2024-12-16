@@ -79,6 +79,9 @@ vim.opt.scrolloff = 10
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- set latex as default tex flavour
+vim.g.tex_flavor = 'latex'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -202,15 +205,25 @@ require('lazy').setup({
             require('which-key').setup()
 
             -- Document existing key chains
-            require('which-key').register {
-                ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-                ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-                ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-                ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-                ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-                ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-                ['<leader>j'] = { name = '[j]ump', _ = 'which_key_ignore' },
-                ['<leader>b'] = { name = '[b]uffer', _ = 'which_key_ignore' },
+            require('which-key').add {
+                { '<leader>b', group = '[b]uffer' },
+                { '<leader>b_', hidden = true },
+                { '<leader>c', group = '[c]ode' },
+                { '<leader>c_', hidden = true },
+                { '<leader>d', group = '[d]ocument' },
+                { '<leader>d_', hidden = true },
+                { '<leader>j', group = '[j]ump' },
+                { '<leader>j_', hidden = true },
+                { '<leader>r', group = '[r]ename' },
+                { '<leader>r_', hidden = true },
+                { '<leader>s', group = '[s]earch' },
+                { '<leader>s_', hidden = true },
+                { '<leader>t', group = '[t]oggle' },
+                { '<leader>t_', hidden = true },
+                { '<leader>w', group = '[w]orkspace' },
+                { '<leader>w_', hidden = true },
+                { '<leader>m', group = '([m]ain) filetype specific' },
+                { '<leader>m_', hidden = true },
             }
             -- visual mode
             -- require('which-key').register({
@@ -539,11 +552,14 @@ require('lazy').setup({
                         },
                     },
                 },
-                -- typst_lsp = {
-                --     settings = {
-                --         exportPdf = 'onSave',
-                --     },
-                -- },
+                -- typst lsp
+                tinymist = {
+                    settings = {
+                        tinymist = {
+                            exportPdf = 'onSave',
+                        },
+                    },
+                },
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
                 --
                 -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -552,6 +568,12 @@ require('lazy').setup({
                 -- But for many setups, the LSP (`tsserver`) will work just fine
                 -- tsserver = {},
                 --
+                -- NOTE: does nothing :(
+                ruff = {
+                    settings = {
+                        configuration = '~/.config/ruff/ruff.toml',
+                    },
+                },
 
                 lua_ls = {
                     -- cmd = {...},
@@ -588,7 +610,10 @@ require('lazy').setup({
                 'mypy',
 
                 'latexindent',
-                'typstfmt',
+
+                -- typst stuff
+                'tinymist',
+                -- 'typstyle',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -638,7 +663,7 @@ require('lazy').setup({
                 -- Conform can also run multiple formatters sequentially
                 python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
                 tex = { 'latexindent' },
-                typst = { 'typstfmt' },
+                typst = { 'typstyle' },
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
@@ -944,6 +969,9 @@ keys('i', '<C-s>', ':w<CR>', { desc = 'Safe current buffer' })
 
 -- todo list
 keys('n', '<leader>tl', vim.cmd.TodoTelescope, { desc = '[t]odo [l]ist in telescope' })
+
+-- keys('i', '<C-BS>', '<esc>dabi', { desc = '[d]elete last word' })
+-- keys('i', '<C-Del>', '<esc>dawi', { desc = '[d]elete next word' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
